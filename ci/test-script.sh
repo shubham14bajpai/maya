@@ -59,6 +59,8 @@ waitForDeployment openebs-provisioner openebs
 waitForDeployment openebs-ndm-operator openebs
 dumpMayaAPIServerLogs 200
 
+kubectl logs --tail=20 -n openebs deployment/openebs-admission-server
+
 kubectl get pods --all-namespaces
 
 
@@ -472,12 +474,15 @@ for i in $(seq 1 15) ; do
 
         if [ "$phaseJiva" != "Running" ]; then
             kubectl describe pods busybox-clone-jiva
+			kubectl describe pvc demo-snap-vol-claim-jiva
         fi
         if [ "$phaseCstor" != "Running" ]; then
             kubectl describe pods busybox-clone-cstor
+			kubectl describe pvc demo-snap-vol-claim-cstor
         fi
         if [ "$phaseCstorNs" != "Running" ]; then
             kubectl describe pods busybox-clone-cstor-ns
+			kubectl describe pvc demo-snap-vol-claim-cstor-ns
         fi
 		sleep 30
         fi

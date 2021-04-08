@@ -26,6 +26,8 @@ sudo docker tag ${IMAGE_ORG}/m-apiserver-amd64:ci quay.io/openebs/m-apiserver:${
 sudo docker tag ${IMAGE_ORG}/cstor-pool-mgmt-amd64:ci quay.io/openebs/cstor-pool-mgmt:${CI_TAG}
 sudo docker tag ${IMAGE_ORG}/cstor-volume-mgmt-amd64:ci quay.io/openebs/cstor-volume-mgmt:${CI_TAG}
 
+sudo docker images
+
 ## install iscsi pkg
 echo "Installing iscsi packages"
 sudo apt-get install open-iscsi
